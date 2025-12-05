@@ -3,73 +3,27 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Real Estate Enquiry Form</title>
+<title>Commercial Property Enquiry – Freshsales Integrated</title>
 
-<!-- Basic Styling -->
 <style>
   body {
     font-family: Arial, sans-serif;
-    padding: 0;
-    margin: 0;
     background: #f5f5f5;
+    padding: 40px;
   }
-
   .container {
-    max-width: 500px;
-    margin: 40px auto;
+    max-width: 600px;
+    margin: auto;
+    padding: 25px;
     background: #fff;
-    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
-
   h2 {
     text-align: center;
     color: #444;
-    margin-bottom: 20px;
-  }
-
-  label {
-    display: block;
-    margin: 10px 0 6px;
-    font-weight: bold;
-  }
-
-  input, select, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-  }
-
-  button {
-    width: 100%;
-    padding: 12px;
-    background: #2563eb;
-    color: #fff;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background: #1e4fd4;
-  }
-
-  #status {
-    margin-top: 20px;
-    display: none;
-    text-align: center;
-    font-size: 15px;
   }
 </style>
-  <script
-src='//in.fw-cdn.com/32654092/1481647.js'
-chat='true'>
-</script>
-<script src='https://anushmita296-org.myfreshworks.com/crm/sales/web_forms/1920f52c5474829dadc087f1077a3246ac127b06a937095c34fa11739df6992c/form.js' crossorigin='anonymous' id='fs_1920f52c5474829dadc087f1077a3246ac127b06a937095c34fa11739df6992c'></script>
 
 </head>
 <body>
@@ -77,94 +31,15 @@ chat='true'>
 <div class="container">
   <h2>Commercial Property Enquiry</h2>
 
-  <form id="leadForm">
-
-    <label>Name</label>
-    <input type="text" id="name" name="name" required />
-
-    <label>Email</label>
-    <input type="email" id="email" name="email" required />
-
-    <label>Company Name (Optional)</label>
-    <input type="text" id="company_name" name="company_name" />
-
-    <label>Phone</label>
-    <input type="text" id="phone" name="phone" required />
-
-    <label>Property Type</label>
-    <select id="property_type" name="property_type" required>
-      <option value="">Select</option>
-      <option>Commercial</option>
-      <option>Residential</option>
-      <option>Land / Plot</option>
-    </select>
-
-    <label>Budget</label>
-    <select id="budget" name="budget" required>
-      <option value="">Select</option>
-      <option>50L - 80L</option>
-      <option>80L - 1Cr</option>
-      <option>1Cr - 2Cr</option>
-    </select>
-
-    <label>Location Preference</label>
-    <input type="text" id="location" name="location" required />
-
-    <!-- Hidden field for company domain -->
-    <input type="hidden" id="companyDomain" name="company_domain" />
-
-    <button type="submit">Submit Enquiry</button>
-  </form>
-
-  <div id="status"></div>
+  <!-- Freshsales Web Form will load here -->
+  <div id="fs_form_container"></div>
 </div>
 
-<script>
-  const form = document.getElementById('leadForm');
-  const statusEl = document.getElementById('status');
-
-  // Extract company domain from work email
-  const emailInput = document.getElementById('email');
-  const domainField = document.getElementById('companyDomain');
-
-  emailInput.addEventListener('input', () => {
-    const email = emailInput.value;
-    const match = email.match(/@(.+)/);
-
-    if (match) {
-      const domain = match[1].toLowerCase();
-
-      const personalEmails = [
-        "gmail.com", "yahoo.com", "hotmail.com", "outlook.com",
-        "live.com", "aol.com", "icloud.com", "protonmail.com",
-        "rediffmail.com", "yandex.com"
-      ];
-
-      if (!personalEmails.includes(domain)) {
-        domainField.value = domain;
-      } else {
-        domainField.value = "";
-      }
-    }
-  });
-
-  // Handle form submission
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    // Send form data to Freshsales
-    if (typeof freshsales !== "undefined") {
-      freshsales.trackForm('#leadForm');
-    }
-
-    // Show success message
-    statusEl.style.display = 'block';
-    statusEl.style.color = 'green';
-    statusEl.textContent = "Form submitted! Lead captured in Freshsales.";
-
-    form.reset();
-  });
-</script>
+<!-- Only Freshsales form script -->
+<script 
+src="https://anushmita296-org.myfreshworks.com/crm/sales/web_forms/1920f52c5474829dadc087f1077a3246ac127b06a937095c34fa11739df6992c/form.js" 
+id="fs_1920f52c5474829dadc087f1077a3246ac127b06a937095c34fa11739df6992c"
+crossorigin="anonymous"></script>
 
 </body>
 </html>
