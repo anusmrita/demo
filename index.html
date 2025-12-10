@@ -549,7 +549,8 @@
           <div class="tag-pill">Investment</div>
         </div>
 
-        <form id="leadForm">
+        <form id="leadForm" action="thankyou.html" method="GET">
+
 
           <div>
             <label for="name">Full name *</label>
@@ -810,16 +811,6 @@
     const form = document.getElementById('leadForm');
     const statusEl = document.getElementById('formStatus');
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(form).entries());
-
-      statusEl.style.display = 'block';
-      statusEl.style.color = '#bbf7d0';
-      statusEl.textContent = 'Demo only: form submitted successfully. Connect to CRM for real capture.';
-
-      form.reset();
-    });
   </script>
 
 </body>
